@@ -3,27 +3,29 @@
 body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
 #map { z-index: 0; }
 
-/* NAVBAR ALWAYS VISIBLE */
+/* NAVBAR SCROLL BEHAVIOR */
 #main-navbar {
     position: fixed;
     left: 0; right: 0;
     top: 0;
     z-index: 40;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
 }
 
-/* HIDE ONLY FEATURE BUTTONS */
+#main-navbar.scroll-down {
+    transform: translateY(-100%);
+}
+
+#main-navbar.scroll-up {
+    transform: translateY(0);
+}
+
+/* HIDE ONLY FEATURES */
 #nav-features.hidden {
     display: none !important;
 }
 
-/* Rest of your styles */
-@keyframes pulse-alert { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-.critical-alert { animation: pulse-alert 1.5s infinite; }
-
-#alerts-container, #stations-container { max-height: 400px; overflow-y: auto; }
-#alerts-container::-webkit-scrollbar, #stations-container::-webkit-scrollbar { width: 6px; }
-#alerts-container::-webkit-scrollbar-track, #stations-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-#alerts-container::-webkit-scrollbar-thumb, #stations-container::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
-
-.nav-btn { @apply text-gray-700 bg-gray-100 hover:bg-gray-200; }
+/* BUTTONS */
+.nav-btn { @apply text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg; }
 .nav-btn.active { @apply bg-blue-600 text-white; }
